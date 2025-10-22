@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cửa hàng Sách ABC</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Header chính của trang web gồm tên cửa hàng và thanh điều hướng -->
+    <header> 
+      <div class="container">
+        <h1>Cửa hàng Sách ABC</h1>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#products">Sản phẩm</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Thẻ section nhóm các giới thiệu về cửa hàng -->
+      <section id="home">
+        <h2>Giới thiệu</h2>
+        <p>
+          Cửa hàng Sách ABC cung cấp đa dạng đầu sách cam kết chất lượng và dịch vụ khách hàng
+          tận tâm.
+        </p>
+      </section>
+      <!-- Thẻ section liệt kê các sản phẩm sách có sẵn -->
+      <section id="product-list">
+        <h2>Danh sách sản phẩm</h2>
+        <!-- Cụ thể từng article mỗi article gồm tiêu đề, hình ảnh, mô tả và giá -->
+        <article class="product-item" aria-labelledby="prod1-title">
+          <h3 id="prod1-title">Sách: Hành trình tìm chính mình</h3>
+          <img src="https://png.pngtree.com/png-vector/20241102/ourmid/pngtree-a-open-book-with-blank-pages-on-isolated-png-image_14236021.png" alt="Bìa sách Hành trình tìm chính mình" />
+          <p>
+            Cuốn sách tự lực giúp bạn khám phá bản thân và phát triển thói quen
+            tích cực.
+          </p>
+          <p>Giá: 120.000₫</p>
+        </article>
+
+        <article class="product-item" aria-labelledby="prod2-title">
+          <h3 id="prod2-title">Sách: Lịch sử thế giới ngắn gọn</h3>
+          <img src="https://png.pngtree.com/png-vector/20241102/ourmid/pngtree-a-open-book-with-blank-pages-on-isolated-png-image_14236021.png" alt="Bìa sách Lịch sử thế giới ngắn gọn" />
+          <p>
+            Tóm tắt các mốc quan trọng trong lịch sử nhân loại, phù hợp cho mọi
+            độc giả.
+          </p>
+          <p>Giá: 150.000₫</p>
+        </article>
+
+        <article class="product-item" aria-labelledby="prod3-title">
+          <h3 id="prod3-title">Sách: Hướng dẫn lập trình cơ bản</h3>
+          <img src="https://png.pngtree.com/png-vector/20241102/ourmid/pngtree-a-open-book-with-blank-pages-on-isolated-png-image_14236021.png" alt="Bìa sách Hướng dẫn lập trình cơ bản" />
+          <p>Giáo trình dễ hiểu dành cho người mới bắt đầu học lập trình.</p>
+          <p>Giá: 200.000₫</p>
+        </article>
+      </section>
+    </main>
+
+    <!-- phần cuối của trang web với thông tin liên hệ và form liên hệ -->
+    <footer id="contact"> 
+      <div class="contact-info">
+        <p>
+          &copy; <span id="year">2025</span> Cửa hàng Sách ABC. Địa chỉ: 123
+          Đường Sách, Thành phố.
+        </p>
+        <p>Điện thoại: 0123-456-789 | Email: info@abcbookstore.vn</p>
+      </div>
+
+      <div class="contact-form">
+        <h2>Liên hệ với chúng tôi</h2>
+        <!-- form gồm các trường: Họ và tên, Email, Số điện thoại, Nội dung liên hệ và nút gửi -->
+        <form action="#" method="post" aria-labelledby="contact-form-title">
+          <div>
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9+\- ]*" />
+          </div>
+
+          <div>
+            <label for="message">Nội dung</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Gửi</button>
+          </div>
+        </form>
+      </div>
+    </footer>
+  </body>
+</html>
