@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cửa hàng Sách ABC</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header chính của trang web gồm tên cửa hàng và thanh điều hướng -->
+    <header>
+      <div class="container">
+        <h1>Cửa hàng Sách ABC</h1>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#products">Sản phẩm</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Thẻ section nhóm các giới thiệu về cửa hàng -->
+      <section id="home">
+        <h2>Giới thiệu</h2>
+        <p>
+          Cửa hàng Sách ABC cung cấp đa dạng đầu sách cam kết chất lượng và dịch
+          vụ khách hàng tận tâm.
+        </p>
+      </section>
+      <!-- Thẻ section liệt kê các sản phẩm sách có sẵn -->
+      <section id="product-list">
+        <h2>Danh sách sản phẩm</h2>
+
+        <!-- phần tìm kiếm và nút thêm sản phẩm -->
+        <div class="product-controls">
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Tìm kiếm sản phẩm..."
+            />
+            <button id="searchBtn">Tìm</button>
+          </div>
+
+          <!-- Bộ lọc nâng cao -->
+          <div class="filter-box">
+            <select id="categoryFilter">
+              <option value="">Tất cả danh mục</option>
+              <option value="Tự lực">Sách tự lực</option>
+              <option value="Lịch sử">Sách lịch sử</option>
+              <option value="Lập trình">Sách lập trình</option>
+              <option value="Khác">Khác</option>
+            </select>
+
+            <select id="priceFilter">
+              <option value="">Tất cả giá</option>
+              <option value="0-100000">Dưới 100.000₫</option>
+              <option value="100000-200000">100.000₫ - 200.000₫</option>
+              <option value="200000-500000">200.000₫ - 500.000₫</option>
+              <option value="500000-999999999">Trên 500.000₫</option>
+            </select>
+
+            <button id="resetFilterBtn" title="Xóa bộ lọc">🔄 Reset</button>
+          </div>
+          <button id="addProductBtn">Thêm sản phẩm</button>
+        </div>
+
+        <!-- Form thêm sản phẩm -->
+        <form id="addProductForm" class="hidden add-product-form">
+          <h3>Thêm sản phẩm mới</h3>
+          <div>
+            <label for="productName">Tên sản phẩm</label>
+            <input type="text" id="productName" name="productName" />
+          </div>
+
+          <div>
+            <label for="productImage">URL hình ảnh</label>
+            <input type="url" id="productImage" name="productImage" />
+          </div>
+          <div>
+            <label for="productDesc">Mô tả sản phẩm</label>
+            <textarea id="productDesc" name="productDesc" rows="3"></textarea>
+          </div>
+          <div>
+            <label for="productPrice">Giá (VNĐ)</label>
+            <input type="number" id="productPrice" name="productPrice" />
+          </div>
+          <!-- Thông báo lỗi sẽ được thêm động bởi JavaScript -->
+          <div>
+            <button type="submit">Lưu sản phẩm</button>
+            <button type="button" id="cancelAddBtn">Hủy</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- phần cuối của trang web với thông tin liên hệ và form liên hệ -->
+    <footer id="contact">
+      <div class="contact-info">
+        <p>
+          &copy; <span id="year">2025</span> Cửa hàng Sách ABC. Địa chỉ: 123
+          Đường Sách, Thành phố.
+        </p>
+        <p>Điện thoại: 0123-456-789 | Email: info@abcbookstore.vn</p>
+      </div>
+
+      <div class="contact-form">
+        <h2>Liên hệ với chúng tôi</h2>
+        <!-- form gồm các trường: Họ và tên, Email, Số điện thoại, Nội dung liên hệ và nút gửi -->
+        <form action="#" method="post" aria-labelledby="contact-form-title">
+          <div>
+            <label for="name">Họ và tên</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9+\- ]*" />
+          </div>
+
+          <div>
+            <label for="message">Nội dung</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Gửi</button>
+          </div>
+        </form>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
