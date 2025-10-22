@@ -34,9 +34,6 @@ function searchProducts() {
       }
     }
   });
-
-  // Thông báo nếu không tìm thấy sản phẩm
-  console.log(`Tìm thấy ${foundCount} sản phẩm`);
 }
 
 // Gắn sự kiện click cho nút tìm kiếm
@@ -72,7 +69,7 @@ addProductBtn.addEventListener("click", toggleAddProductForm);
 cancelAddBtn.addEventListener("click", function () {
   addProductForm.classList.add("hidden");
   addProductForm.reset(); // Reset form khi hủy
-  
+
   // Xóa thông báo lỗi
   const errorMsg = document.getElementById("errorMsg");
   if (errorMsg) {
@@ -104,13 +101,23 @@ addProductForm.addEventListener("submit", function (event) {
   // Kiểm tra tên sản phẩm
   if (productName === "") {
     errorMsg.textContent = "❌ Vui lòng nhập tên sản phẩm!";
+    errorMsg.style.display = "block";
     document.getElementById("productName").focus();
     return;
   }
 
-  if (productName.length < 3) {
-    errorMsg.textContent = "❌ Tên sản phẩm phải có ít nhất 3 ký tự!";
-    document.getElementById("productName").focus();
+  // Kiểm tra mô tả
+  if (productDesc === "") {
+    errorMsg.textContent = "❌ Vui lòng nhập mô tả sản phẩm!";
+    errorMsg.style.display = "block";
+    document.getElementById("productDesc").focus();
+    return;
+  }
+
+  if (productDesc.length < 10) {
+    errorMsg.textContent = "❌ Mô tả sản phẩm phải có ít nhất 10 ký tự!";
+    errorMsg.style.display = "block";
+    document.getElementById("productDesc").focus();
     return;
   }
 
@@ -118,38 +125,20 @@ addProductForm.addEventListener("submit", function (event) {
   const price = Number(productPrice);
   if (productPrice === "" || isNaN(price)) {
     errorMsg.textContent = "❌ Vui lòng nhập giá hợp lệ!";
+    errorMsg.style.display = "block";
     document.getElementById("productPrice").focus();
     return;
   }
 
   if (price <= 0) {
     errorMsg.textContent = "❌ Giá sản phẩm phải lớn hơn 0!";
+    errorMsg.style.display = "block";
     document.getElementById("productPrice").focus();
     return;
   }
 
-  // Kiểm tra mô tả
-  if (productDesc === "") {
-    errorMsg.textContent = "❌ Vui lòng nhập mô tả sản phẩm!";
-    document.getElementById("productDesc").focus();
-    return;
-  }
-
-  if (productDesc.length < 10) {
-    errorMsg.textContent = "❌ Mô tả sản phẩm phải có ít nhất 10 ký tự!";
-    document.getElementById("productDesc").focus();
-    return;
-  }
-
-  // Kiểm tra URL hình ảnh (optional)
-  if (productImage !== "" && !isValidURL(productImage)) {
-    errorMsg.textContent = "❌ URL hình ảnh không hợp lệ!";
-    document.getElementById("productImage").focus();
-    return;
-  }
-
   // === Nếu validation thành công, xóa thông báo lỗi ===
-  errorMsg.textContent = "";
+  errorMsg.style.display = "none";
 
   // Tạo ID duy nhất cho sản phẩm mới
   const newId = "prod-" + Date.now();
@@ -160,7 +149,8 @@ addProductForm.addEventListener("submit", function (event) {
   newProduct.setAttribute("aria-labelledby", newId);
 
   // Sử dụng ảnh mặc định nếu không có URL
-  const imageUrl = productImage || 
+  const imageUrl =
+    productImage ||
     "https://png.pngtree.com/png-vector/20241102/ourmid/pngtree-a-open-book-with-blank-pages-on-isolated-png-image_14236021.png";
 
   // Thêm nội dung cho sản phẩm mới
@@ -173,7 +163,7 @@ addProductForm.addEventListener("submit", function (event) {
 
   // Thêm sản phẩm vào đầu danh sách
   const productList = document.getElementById("product-list");
-  
+
   // Tìm vị trí sau form để chèn sản phẩm
   const firstProduct = productList.querySelector(".product-item");
   if (firstProduct) {
@@ -214,11 +204,11 @@ function isValidURL(string) {
 // Hàm escape HTML để tránh XSS
 function escapeHtml(text) {
   const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
   };
-  return text.replace(/[&<>"']/g, m => map[m]);
+  return text.replace(/[&<>"']/g, (m) => map[m]);
 }
