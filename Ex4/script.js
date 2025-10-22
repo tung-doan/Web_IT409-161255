@@ -1,11 +1,11 @@
-// 1. Lấy các phần tử DOM
+// Lấy các phần tử DOM
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const addProductBtn = document.getElementById("addProductBtn");
 const addProductForm = document.getElementById("addProductForm");
 const cancelAddBtn = document.getElementById("cancelAddBtn");
 
-// 2. Xử lý tìm kiếm sản phẩm
+// Xử lý tìm kiếm sản phẩm
 function searchProducts() {
   // Lấy giá trị tìm kiếm và chuyển về chữ thường
   const searchTerm = searchInput.value.toLowerCase().trim();
@@ -48,7 +48,7 @@ searchInput.addEventListener("keyup", function (event) {
   searchProducts();
 });
 
-// 3. Xử lý hiển thị/ẩn form thêm sản phẩm
+// Xử lý hiển thị/ẩn form thêm sản phẩm
 function toggleAddProductForm() {
   // Toggle class hidden
   addProductForm.classList.toggle("hidden");
@@ -80,7 +80,7 @@ cancelAddBtn.addEventListener("click", function () {
   }
 });
 
-// 4. Xử lý submit form thêm sản phẩm với validation
+// Xử lý submit form thêm sản phẩm với validation
 addProductForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Ngăn form submit mặc định
 
